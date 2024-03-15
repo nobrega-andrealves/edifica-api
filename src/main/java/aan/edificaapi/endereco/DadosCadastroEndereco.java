@@ -6,6 +6,6 @@ public record DadosCadastroEndereco(
         String numero,
         String complemento,
         String bairro,
-        String cidade,
+        String cidade
 ) {
 }
