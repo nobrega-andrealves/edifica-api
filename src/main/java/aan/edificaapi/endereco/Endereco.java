@@ -1,7 +1,7 @@
 package aan.edificaapi.endereco;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import aan.edificaapi.pessoa.Pessoa;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -15,6 +15,9 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 public class Endereco {
     private Long id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idPessoa")
+    private Pessoa pessoa;
     private String cep;
     private String logradouro;
     private String numero;

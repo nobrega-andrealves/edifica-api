@@ -1,7 +1,7 @@
 package aan.edificaapi.email;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import aan.edificaapi.pessoa.Pessoa;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -14,7 +14,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class EMail {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idPessoa")
+    private Pessoa pessoa;
+    
     String eMail;
     private Boolean ativo;
 }

@@ -6,8 +6,7 @@ import aan.edificaapi.igreja.Igreja;
 import aan.edificaapi.perfil.Perfil;
 import aan.edificaapi.telefone.Telefone;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -24,18 +23,34 @@ import java.time.LocalDate;
 @EqualsAndHashCode(of = "id")
 public class Pessoa {
     private Long id;
+
     private String nome;
+
     private String cpf;
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
+
     private String sexo;
+
     private Perfil perfil;
+
     private Igreja igreja;
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     @PastOrPresent
     private LocalDate dataInicioMembro;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idPessoa")
     private EMail email;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idPessoa")
     private Telefone telefone;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idPessoa")
     private Endereco endereco;
 
     public Pessoa(DadosCadastroPessoa dados) {
