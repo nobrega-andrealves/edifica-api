@@ -1,5 +1,6 @@
 package aan.edificaapi.controller;
 
+import aan.edificaapi.endereco.Endereco;
 import aan.edificaapi.igreja.Igreja;
 import aan.edificaapi.pessoa.DadosCadastroPessoa;
 import aan.edificaapi.pessoa.Pessoa;
@@ -23,6 +24,11 @@ public class PessoaController {
     @Transactional
     public void cadastrar(@RequestBody @Valid DadosCadastroPessoa dados){
 
-        repository.save(new Pessoa(dados));
+        Pessoa pessoa = new Pessoa(dados);
+        repository.save(pessoa);
+        /*pessoa.getEndereco().setPessoa_id(pessoa.getId());
+        System.out.println(pessoa);
+        repository.save(pessoa);*/
+        System.out.println(pessoa);
     }
 }

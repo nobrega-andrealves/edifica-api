@@ -17,11 +17,6 @@ public class EMail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idPessoa")
-    private Pessoa pessoa;
-    
-    String eMail;
+    String enderecoEmail;
     private Boolean ativo;
 }

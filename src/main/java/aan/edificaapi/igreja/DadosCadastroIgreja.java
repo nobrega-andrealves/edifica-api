@@ -14,7 +14,7 @@ public record DadosCadastroIgreja(
         String nome,
         @NotBlank
         String responsavel,
-        @Pattern(regexp = "^((\\(\\d{2,3}[ -]?\\))|\\d{9})$")
+        @Pattern(regexp = "^\\(?([0-9]{2})\\)?( ?)([0-9]{5})\\-?([0-9]{4})$")
         String telefone,
         @JsonFormat(pattern = "dd/MM/yyyy")
         LocalDate dataCriacao,

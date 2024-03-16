@@ -2,8 +2,6 @@ package aan.edificaapi.pessoa;
 
 import aan.edificaapi.email.EMail;
 import aan.edificaapi.endereco.Endereco;
-import aan.edificaapi.igreja.Igreja;
-import aan.edificaapi.perfil.Perfil;
 import aan.edificaapi.telefone.Telefone;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -15,12 +13,13 @@ public record DadosCadastroPessoa(
         @JsonFormat(pattern = "dd/MM/yyyy")
         LocalDate dataNascimento,
         String sexo,
-        Perfil perfil,
-        Igreja igreja,
+        Long idPerfil,
+        Long idIgreja,
         @JsonFormat(pattern = "dd/MM/yyyy")
         LocalDate dataInicioMembro,
         EMail email,
         Telefone telefone,
-        Endereco endereco
+        Endereco endereco,
+        Boolean ativo
 ) {
 }
