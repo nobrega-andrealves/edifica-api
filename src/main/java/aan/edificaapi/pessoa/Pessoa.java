@@ -79,7 +79,9 @@ public class Pessoa {
     }
 
     public boolean informacoesAtualizadas(DadosCadastroPessoa dados) {
+
         boolean atualizou = false;
+
         if (dados.nome() != null && !dados.nome().equals(this.nome)) {
             this.nome = dados.nome();
             atualizou = true;
@@ -119,9 +121,18 @@ public class Pessoa {
             this.enderecos.add(dados.endereco());
             atualizou = true;
         }
-/*
-        this.listaEmail.add(dados.email());
-        this.listaTelefone.add(dados.telefone());*/
+
+        if (dados.telefone() != null && !dados.telefone().equals(this.listaTelefone.get(0))) {
+            this.listaTelefone.get(0).setAtivo(false);
+            this.listaTelefone.add(dados.telefone());
+            atualizou = true;
+        }
+
+        if (dados.email() != null && !dados.telefone().equals(this.listaEmail.get(0))) {
+            this.listaEmail.get(0).setAtivo(false);
+            this.listaEmail.add(dados.email());
+            atualizou = true;
+        }
         return atualizou;
     }
 }

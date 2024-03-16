@@ -1,17 +1,15 @@
 package aan.edificaapi.telefone;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Table(name="telefone")
 @Entity(name="Telefone")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(exclude = {"id"})
 public class Telefone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
