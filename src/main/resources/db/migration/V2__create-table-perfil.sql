@@ -15,3 +15,39 @@ values
 (
     'ADMINISTRADOR', 'ADMINISTRADOR DO SISTEMA','2024-03-15',1
 );
+
+insert into perfil
+(
+    nome, descricao, dataCriacao, ativo
+)
+values
+(
+    'SECRETARIO(A)', 'Secretário(a) da paróquia, igreja ou capela','2024-03-15',1
+);
+
+insert into perfil
+(
+    nome, descricao, dataCriacao, ativo
+)
+values
+(
+    'PADRE', 'Padre','2024-03-15',1
+);
+
+insert into perfil
+(
+    nome, descricao, dataCriacao, ativo
+)
+values
+(
+    'RESPONSÁVEL', 'Responsável','2024-03-15',1
+);
+
+insert into perfil
+(
+    nome, descricao, dataCriacao, ativo
+)
+values
+(
+    'MEMBRO', 'Membro da paróquia, igreja ou capela','2024-03-15',1
+);

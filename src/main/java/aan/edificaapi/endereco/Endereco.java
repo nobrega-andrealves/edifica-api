@@ -10,7 +10,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(exclude = {"id"})
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

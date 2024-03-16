@@ -1,17 +1,17 @@
 package aan.edificaapi.controller;
 
-import aan.edificaapi.endereco.Endereco;
-import aan.edificaapi.igreja.Igreja;
 import aan.edificaapi.pessoa.DadosCadastroPessoa;
 import aan.edificaapi.pessoa.Pessoa;
 import aan.edificaapi.pessoa.PessoaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("pessoa")
@@ -22,13 +22,47 @@ public class PessoaController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastroPessoa dados){
+    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroPessoa dados, UriComponentsBuilder uriBuilder){
 
         Pessoa pessoa = new Pessoa(dados);
         repository.save(pessoa);
-        /*pessoa.getEndereco().setPessoa_id(pessoa.getId());
-        System.out.println(pessoa);
-        repository.save(pessoa);*/
-        System.out.println(pessoa);
+        var uri = uriBuilder.path("/pessoa/{id}").buildAndExpand(pessoa.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(pessoa);
+    }
+    @GetMapping
+    public List<Pessoa> listar(){
+        return repository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity recuperarPorId(@PathVariable Long id){
+
+        Optional<Pessoa> cadastro = repository.findById(id);
+
+        if (cadastro.isPresent()) {
+            Pessoa pessoa;
+            pessoa = cadastro.get();
+            return ResponseEntity.ok(pessoa);
+        }
+        return ResponseEntity.badRequest().body("Pessoa não localizada");
+    }
+
+    @PutMapping
+    @Transactional
+    public ResponseEntity atualizar(@RequestBody @Valid DadosCadastroPessoa dados) {
+
+        Optional<Pessoa> cadastro = repository.findById(dados.id());
+
+        if (cadastro.isPresent()) {
+            Pessoa pessoa;
+            pessoa = cadastro.get();
+            if (pessoa.informacoesAtualizadas(dados)){
+                return ResponseEntity.ok(pessoa);
+            } else {
+                return ResponseEntity.badRequest().body("Nenhum dado para atualizar");
+            }
+        }
+        return ResponseEntity.badRequest().body("Pessoa não localizada");
     }
 }

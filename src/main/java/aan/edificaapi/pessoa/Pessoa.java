@@ -68,4 +68,51 @@ public class Pessoa {
         this.listaEmail.add(dados.email());
         this.listaTelefone.add(dados.telefone());
     }
+
+    public boolean informacoesAtualizadas(DadosCadastroPessoa dados) {
+        boolean atualizou = false;
+        if (dados.nome() != null && !dados.nome().equals(this.nome)) {
+            this.nome = dados.nome();
+            atualizou = true;
+        }
+        if (dados.dataNascimento() != null && !dados.dataNascimento().equals(this.dataNascimento)) {
+            this.dataNascimento = dados.dataNascimento();
+            atualizou = true;
+        }
+
+        if (dados.sexo() != null && !dados.sexo().equals(this.sexo)) {
+            this.sexo = dados.sexo();
+            atualizou = true;
+        }
+
+        if (dados.idPerfil() != null && !dados.idPerfil().equals(this.idPerfil)) {
+            this.idPerfil = dados.idPerfil();
+            atualizou = true;
+        }
+
+        if (dados.idIgreja() != null && !dados.idIgreja().equals(this.idIgreja)) {
+            this.idIgreja = dados.idIgreja();
+            atualizou = true;
+        }
+
+        if (dados.dataInicioMembro() != null && !dados.dataInicioMembro().equals(this.dataInicioMembro)) {
+            this.dataInicioMembro = dados.dataInicioMembro();
+            atualizou = true;
+        }
+
+        if (dados.ativo() != null && !dados.ativo().equals(this.ativo)) {
+            this.ativo = dados.ativo();
+            atualizou = true;
+        }
+
+        if (dados.endereco() != null && !dados.endereco().equals(this.enderecos.get(0))) {
+            this.enderecos.get(0).setAtivo(false);
+            this.enderecos.add(dados.endereco());
+            atualizou = true;
+        }
+/*
+        this.listaEmail.add(dados.email());
+        this.listaTelefone.add(dados.telefone());*/
+        return atualizou;
+    }
 }
