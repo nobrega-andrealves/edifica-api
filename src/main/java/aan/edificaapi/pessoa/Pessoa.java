@@ -5,8 +5,11 @@ import aan.edificaapi.endereco.Endereco;
 import aan.edificaapi.telefone.Telefone;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.PastOrPresent;
 import lombok.*;
+import org.hibernate.annotations.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -41,16 +44,22 @@ public class Pessoa {
     @PastOrPresent
     private LocalDate dataInicioMembro;
 
+    /*@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "pessoa_id", nullable = false)*/
+
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "pessoa_id", nullable = false)
+    @SQLRestriction("ativo = 1")
     private List<Endereco> enderecos = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "pessoa_id", nullable = false)
+    @SQLRestriction("ativo = 1")
     private List<EMail> listaEmail = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "pessoa_id", nullable = false)
+    @SQLRestriction("ativo = 1")
     private List<Telefone> listaTelefone = new ArrayList<>();
 
     private Boolean ativo;
