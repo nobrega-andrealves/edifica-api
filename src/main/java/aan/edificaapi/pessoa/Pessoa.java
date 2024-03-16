@@ -21,7 +21,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(exclude = {"id","enderecos", "listaEmail", "listaTelefone"})
 public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -128,7 +128,7 @@ public class Pessoa {
             atualizou = true;
         }
 
-        if (dados.email() != null && !dados.telefone().equals(this.listaEmail.get(0))) {
+        if (dados.email() != null && !dados.email().equals(this.listaEmail.get(0))) {
             this.listaEmail.get(0).setAtivo(false);
             this.listaEmail.add(dados.email());
             atualizou = true;
