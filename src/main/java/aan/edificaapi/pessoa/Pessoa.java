@@ -65,6 +65,13 @@ public class Pessoa {
     private Boolean ativo;
 
     public Pessoa(DadosCadastroPessoa dados) {
+        preencherPessoa(dados);
+        this.enderecos.add(dados.endereco());
+        this.listaEmail.add(dados.email());
+        this.listaTelefone.add(dados.telefone());
+    }
+
+    private void preencherPessoa(DadosCadastroPessoa dados) {
         this.nome = dados.nome();
         this.cpf = dados.cpf();
         this.dataNascimento = dados.dataNascimento();
@@ -73,46 +80,16 @@ public class Pessoa {
         this.idIgreja = dados.idIgreja();
         this.dataInicioMembro = dados.dataInicioMembro();
         this.ativo = dados.ativo();
-        this.enderecos.add(dados.endereco());
-        this.listaEmail.add(dados.email());
-        this.listaTelefone.add(dados.telefone());
     }
 
     public boolean informacoesAtualizadas(DadosCadastroPessoa dados) {
 
         boolean atualizou = false;
 
-        if (dados.nome() != null && !dados.nome().equals(this.nome)) {
-            this.nome = dados.nome();
-            atualizou = true;
-        }
-        if (dados.dataNascimento() != null && !dados.dataNascimento().equals(this.dataNascimento)) {
-            this.dataNascimento = dados.dataNascimento();
-            atualizou = true;
-        }
+        Pessoa pessoaComparacao = new Pessoa(dados);
 
-        if (dados.sexo() != null && !dados.sexo().equals(this.sexo)) {
-            this.sexo = dados.sexo();
-            atualizou = true;
-        }
-
-        if (dados.idPerfil() != null && !dados.idPerfil().equals(this.idPerfil)) {
-            this.idPerfil = dados.idPerfil();
-            atualizou = true;
-        }
-
-        if (dados.idIgreja() != null && !dados.idIgreja().equals(this.idIgreja)) {
-            this.idIgreja = dados.idIgreja();
-            atualizou = true;
-        }
-
-        if (dados.dataInicioMembro() != null && !dados.dataInicioMembro().equals(this.dataInicioMembro)) {
-            this.dataInicioMembro = dados.dataInicioMembro();
-            atualizou = true;
-        }
-
-        if (dados.ativo() != null && !dados.ativo().equals(this.ativo)) {
-            this.ativo = dados.ativo();
+        if (!this.equals(pessoaComparacao)){
+            preencherPessoa(dados);
             atualizou = true;
         }
 
