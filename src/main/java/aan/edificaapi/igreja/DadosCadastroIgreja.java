@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 public record DadosCadastroIgreja(
+        Long id,
         @NotNull
         Long paroquia_id,
         @NotNull

@@ -2,6 +2,8 @@ package aan.edificaapi.pessoa;
 
 import aan.edificaapi.email.EMail;
 import aan.edificaapi.endereco.Endereco;
+import aan.edificaapi.igreja.Igreja;
+import aan.edificaapi.perfil.Perfil;
 import aan.edificaapi.telefone.Telefone;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -36,9 +38,13 @@ public class Pessoa {
 
     private String sexo;
 
-    private Long idPerfil;
+    @ManyToOne()
+    @JoinColumn(name = "idPerfil", nullable = false)
+    private Perfil perfil;
 
-    private Long idIgreja;
+    @ManyToOne()
+    @JoinColumn(name = "idIgreja", nullable = false)
+    private Igreja igreja;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     @PastOrPresent
@@ -73,8 +79,10 @@ public class Pessoa {
         this.cpf = dados.cpf();
         this.dataNascimento = dados.dataNascimento();
         this.sexo = dados.sexo();
-        this.idPerfil = dados.idPerfil();
-        this.idIgreja = dados.idIgreja();
+        this.perfil = new Perfil();
+        this.perfil.setId(dados.idPerfil());
+        this.igreja = new Igreja();
+        this.igreja.setId(dados.idIgreja());
         this.dataInicioMembro = dados.dataInicioMembro();
         this.ativo = dados.ativo();
     }

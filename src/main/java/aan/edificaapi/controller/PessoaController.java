@@ -1,15 +1,20 @@
 package aan.edificaapi.controller;
 
 import aan.edificaapi.pessoa.DadosCadastroPessoa;
+import aan.edificaapi.pessoa.DadosResultadoPesquisaPessoa;
 import aan.edificaapi.pessoa.Pessoa;
 import aan.edificaapi.pessoa.PessoaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,8 +72,8 @@ public class PessoaController {
     }
 
     @GetMapping("/localizar")
-    public List<Pessoa> localizarPorNome(@RequestBody String dadoDeBusca){
-
-        return repository.localizarPorNome(dadoDeBusca);
+    public ResponseEntity<Page<DadosResultadoPesquisaPessoa>> localizarPorNome(@RequestBody String dadoDeBusca, @PageableDefault(size = 10, page = 0, sort = {"nome"}) Pageable paginacao){
+        var page = repository.localizarPorNome(dadoDeBusca, paginacao).map(DadosResultadoPesquisaPessoa::new);
+        return ResponseEntity.ok(page);
     }
 }

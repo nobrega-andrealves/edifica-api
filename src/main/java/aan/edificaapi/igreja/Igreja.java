@@ -1,24 +1,30 @@
 package aan.edificaapi.igreja;
 
+import aan.edificaapi.paroquia.Paroquia;
+import aan.edificaapi.pessoa.Pessoa;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Table(name = "igreja")
 @Entity(name = "Igreja")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(exclude = {"id", "paroquia"})
 public class Igreja {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long paroquia_id;
+
+    @ManyToOne()
+    @JoinColumn(name = "paroquia_id", nullable = false)
+    Paroquia paroquia;
+
     @Enumerated(EnumType.STRING)
     private TipoIgrejaEnum tipoIgreja;
     private String nome;
@@ -29,12 +35,29 @@ public class Igreja {
     private StatusIgrejaEnum status;
 
     public Igreja(DadosCadastroIgreja dados) {
-        this.paroquia_id = dados.paroquia_id();
+        this.paroquia = new Paroquia();
+        this.paroquia.setId(dados.paroquia_id());
+        preencherIgreja(dados);
+    }
+
+    private void preencherIgreja(DadosCadastroIgreja dados) {
         this.tipoIgreja = dados.tipoIgreja();
         this.nome = dados.nome();
         this.responsavel = dados.responsavel();
         this.telefone = dados.telefone();
         this.dataCriacao = dados.dataCriacao();
         this.status = dados.status();
+    }
+
+    public boolean informacoesAtualizadas(DadosCadastroIgreja dados) {
+        boolean atualizou = false;
+
+        Igreja igrejaComparacao = new Igreja(dados);
+
+        if (!this.equals(igrejaComparacao)){
+            preencherIgreja(dados);
+            atualizou = true;
+        }
+        return atualizou;        
     }
 }

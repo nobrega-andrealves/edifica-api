@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX uidx_paroquia_e_nome ON Igreja (paroquia_id, nome);
