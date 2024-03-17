@@ -51,3 +51,12 @@ values
 (
     'MEMBRO', 'Membro da paróquia, igreja ou capela','2024-03-15',1
 );
+
+insert into perfil
+(
+    nome, descricao, dataCriacao, ativo
+)
+values
+(
+    'USUARIO', 'Usuário de serviços da Igreja. Não possui acesso ao sistema','2024-03-15',1
+);

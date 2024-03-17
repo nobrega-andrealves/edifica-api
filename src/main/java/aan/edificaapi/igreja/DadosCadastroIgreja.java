@@ -9,6 +9,8 @@ import java.time.LocalDate;
 
 public record DadosCadastroIgreja(
         @NotNull
+        Long paroquia_id,
+        @NotNull
         TipoIgrejaEnum tipoIgreja,
         @NotBlank
         String nome,

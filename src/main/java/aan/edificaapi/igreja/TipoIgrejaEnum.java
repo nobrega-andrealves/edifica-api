@@ -1,8 +1,8 @@
 package aan.edificaapi.igreja;
 
 public enum TipoIgrejaEnum {
-    PAROQUIA_OU_MATRIZ,
+    MATRIZ,
     IGREJA,
     CAPELA,
-    OUTRO_TIPO
+    OUTRO
 }

@@ -18,6 +18,7 @@ import java.time.LocalDate;
 public class Igreja {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long paroquia_id;
     @Enumerated(EnumType.STRING)
     private TipoIgrejaEnum tipoIgreja;
     private String nome;
@@ -28,6 +29,7 @@ public class Igreja {
     private StatusIgrejaEnum status;
 
     public Igreja(DadosCadastroIgreja dados) {
+        this.paroquia_id = dados.paroquia_id();
         this.tipoIgreja = dados.tipoIgreja();
         this.nome = dados.nome();
         this.responsavel = dados.responsavel();

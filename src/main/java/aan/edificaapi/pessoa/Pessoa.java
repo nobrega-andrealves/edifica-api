@@ -44,9 +44,6 @@ public class Pessoa {
     @PastOrPresent
     private LocalDate dataInicioMembro;
 
-    /*@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "pessoa_id", nullable = false)*/
-
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "pessoa_id", nullable = false)
     @SQLRestriction("ativo = 1")

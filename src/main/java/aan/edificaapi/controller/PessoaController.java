@@ -65,4 +65,10 @@ public class PessoaController {
         }
         return ResponseEntity.badRequest().body("Pessoa não localizada");
     }
+
+    @GetMapping("/localizar")
+    public List<Pessoa> localizarPorNome(@RequestBody String dadoDeBusca){
+
+        return repository.localizarPorNome(dadoDeBusca);
+    }
 }
