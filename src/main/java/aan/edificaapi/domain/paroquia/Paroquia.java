@@ -1,4 +1,4 @@
-package aan.edificaapi.paroquia;
+package aan.edificaapi.domain.paroquia;
 
 import jakarta.persistence.*;
 import lombok.*;

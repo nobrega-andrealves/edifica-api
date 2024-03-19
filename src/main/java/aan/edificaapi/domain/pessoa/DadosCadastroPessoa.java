@@ -1,8 +1,8 @@
-package aan.edificaapi.pessoa;
+package aan.edificaapi.domain.pessoa;
 
-import aan.edificaapi.email.EMail;
-import aan.edificaapi.endereco.Endereco;
-import aan.edificaapi.telefone.Telefone;
+import aan.edificaapi.domain.endereco.Endereco;
+import aan.edificaapi.domain.telefone.Telefone;
+import aan.edificaapi.domain.email.EMail;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;

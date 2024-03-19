@@ -1,6 +1,4 @@
-package aan.edificaapi.igreja;
-
-import jakarta.persistence.*;
+package aan.edificaapi.domain.igreja;
 
 import java.time.LocalDate;
 

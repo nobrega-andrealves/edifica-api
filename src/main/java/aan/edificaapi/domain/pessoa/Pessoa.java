@@ -1,10 +1,10 @@
-package aan.edificaapi.pessoa;
+package aan.edificaapi.domain.pessoa;
 
-import aan.edificaapi.email.EMail;
-import aan.edificaapi.endereco.Endereco;
-import aan.edificaapi.igreja.Igreja;
-import aan.edificaapi.perfil.Perfil;
-import aan.edificaapi.telefone.Telefone;
+import aan.edificaapi.domain.email.EMail;
+import aan.edificaapi.domain.endereco.Endereco;
+import aan.edificaapi.domain.igreja.Igreja;
+import aan.edificaapi.domain.perfil.Perfil;
+import aan.edificaapi.domain.telefone.Telefone;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.persistence.CascadeType;

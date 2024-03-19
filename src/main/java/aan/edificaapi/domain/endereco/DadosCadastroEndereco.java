@@ -1,4 +1,4 @@
-package aan.edificaapi.endereco;
+package aan.edificaapi.domain.endereco;
 
 public record DadosCadastroEndereco(
         String cep,

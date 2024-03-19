@@ -1,8 +1,6 @@
-package aan.edificaapi.pessoa;
+package aan.edificaapi.domain.pessoa;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Objects;
 
 public record DadosResultadoPesquisaPessoa(
         Long id,

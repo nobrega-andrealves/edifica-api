@@ -1,11 +1,7 @@
-package aan.edificaapi.igreja;
+package aan.edificaapi.domain.igreja;
 
-import aan.edificaapi.paroquia.Paroquia;
-import aan.edificaapi.pessoa.Pessoa;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import aan.edificaapi.domain.paroquia.Paroquia;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 import java.time.LocalDate;

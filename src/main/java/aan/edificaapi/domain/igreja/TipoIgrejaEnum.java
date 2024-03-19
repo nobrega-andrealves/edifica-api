@@ -1,4 +1,4 @@
-package aan.edificaapi.igreja;
+package aan.edificaapi.domain.igreja;
 
 public enum TipoIgrejaEnum {
     MATRIZ,

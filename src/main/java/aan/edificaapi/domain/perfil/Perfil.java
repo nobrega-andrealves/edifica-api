@@ -1,19 +1,20 @@
-package aan.edificaapi.telefone;
+package aan.edificaapi.domain.perfil;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table(name="telefone")
-@Entity(name="Telefone")
+@Table(name="perfil")
+@Entity(name="Perfil")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(exclude = {"id"})
-public class Telefone {
+@EqualsAndHashCode(of = "id")
+public class Perfil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String numeroTelefone;
+    String nome;
+    String descricao;
     private Boolean ativo;
 }

@@ -1,21 +1,21 @@
-package aan.edificaapi.igreja;
+package aan.edificaapi.domain.pessoa;
 
-import aan.edificaapi.pessoa.Pessoa;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface IgrejaRepository extends JpaRepository<Igreja, Long> {
+public interface PessoaRepository extends JpaRepository<Pessoa, Long>{
 
     // """ é para quebrar linha sem precisar utilizar o + para concatenar
     @Query(value = """
         SELECT
-            I
+            P
         FROM
-            Igreja I
+            Pessoa P
         WHERE
-            I.nome like CONCAT(:dadoDeBusca,'%')
+            P.ativo = true
+            AND P.nome like CONCAT(:dadoDeBusca,'%')
     """)
-    Page<Igreja> localizarPorNome(String dadoDeBusca, Pageable paginacao);
+    Page<Pessoa> localizarPorNome(String dadoDeBusca, Pageable paginacao);
 }

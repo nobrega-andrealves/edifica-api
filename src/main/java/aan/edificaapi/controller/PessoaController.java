@@ -1,9 +1,9 @@
 package aan.edificaapi.controller;
 
-import aan.edificaapi.pessoa.DadosCadastroPessoa;
-import aan.edificaapi.pessoa.DadosResultadoPesquisaPessoa;
-import aan.edificaapi.pessoa.Pessoa;
-import aan.edificaapi.pessoa.PessoaRepository;
+import aan.edificaapi.domain.pessoa.DadosCadastroPessoa;
+import aan.edificaapi.domain.pessoa.DadosResultadoPesquisaPessoa;
+import aan.edificaapi.domain.pessoa.Pessoa;
+import aan.edificaapi.domain.pessoa.PessoaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package aan.edificaapi.igreja;
+package aan.edificaapi.domain.igreja;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;

@@ -1,6 +1,5 @@
-package aan.edificaapi.email;
+package aan.edificaapi.domain.email;
 
-import aan.edificaapi.pessoa.Pessoa;
 import jakarta.persistence.*;
 import lombok.*;
 
