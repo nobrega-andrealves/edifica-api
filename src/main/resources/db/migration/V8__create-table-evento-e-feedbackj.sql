@@ -27,5 +27,6 @@ create table feedback(
     INDEX FK_FEEDBACKXEVENTO(evento_id),
     FOREIGN KEY(evento_id) REFERENCES evento(id) ON DELETE NO ACTION ON UPDATE NO ACTION,
     INDEX FK_FEEDBACKXPESSOA(pessoa_id),
-    FOREIGN KEY(pessoa_id) REFERENCES pessoa(id) ON DELETE NO ACTION ON UPDATE NO ACTION
+    FOREIGN KEY(pessoa_id) REFERENCES pessoa(id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    UNIQUE INDEX uidx_evento_e_pessoa (evento_id, pessoa_id)
 );
