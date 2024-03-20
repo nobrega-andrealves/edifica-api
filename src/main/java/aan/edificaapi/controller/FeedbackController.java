@@ -1,17 +1,15 @@
 package aan.edificaapi.controller;
 
-import aan.edificaapi.domain.evento.Evento;
 import aan.edificaapi.domain.feedback.DadosCadastroFeedback;
+import aan.edificaapi.domain.feedback.DadosRetornoFeedback;
 import aan.edificaapi.domain.feedback.Feedback;
 import aan.edificaapi.domain.feedback.FeedbackRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,9 +23,14 @@ public class FeedbackController {
 
     @PostMapping
     @Transactional
-    public void darFeedback(@RequestBody @Valid DadosCadastroFeedback dados){
+    public ResponseEntity darFeedback(@RequestBody @Valid DadosCadastroFeedback dados, UriComponentsBuilder uriBuilder ){
 
-        repository.save(new Feedback(dados));
+        Feedback feedback = new Feedback(dados);
+        repository.save(feedback);
+
+        var uri = uriBuilder.path("/feedback/{id}").buildAndExpand(feedback.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(new DadosRetornoFeedback(feedback));
     }
     @GetMapping
     public List<Feedback> listar(){

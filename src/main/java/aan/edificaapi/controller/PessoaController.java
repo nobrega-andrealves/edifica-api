@@ -1,5 +1,7 @@
 package aan.edificaapi.controller;
 
+import aan.edificaapi.domain.evento.DadosRetornoEvento;
+import aan.edificaapi.domain.evento.Evento;
 import aan.edificaapi.domain.pessoa.DadosCadastroPessoa;
 import aan.edificaapi.domain.pessoa.DadosResultadoPesquisaPessoa;
 import aan.edificaapi.domain.pessoa.Pessoa;
@@ -32,7 +34,7 @@ public class PessoaController {
         repository.save(pessoa);
         var uri = uriBuilder.path("/pessoa/{id}").buildAndExpand(pessoa.getId()).toUri();
 
-        return ResponseEntity.created(uri).body(pessoa);
+        return ResponseEntity.created(uri).body(new DadosResultadoPesquisaPessoa(pessoa));
     }
     @GetMapping
     public List<Pessoa> listar(){

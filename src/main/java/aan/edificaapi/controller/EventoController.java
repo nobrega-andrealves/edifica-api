@@ -3,6 +3,7 @@ package aan.edificaapi.controller;
 import aan.edificaapi.domain.evento.DadosCadastroEvento;
 import aan.edificaapi.domain.evento.Evento;
 import aan.edificaapi.domain.evento.EventoRepository;
+import aan.edificaapi.domain.evento.DadosRetornoEvento;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,9 +26,14 @@ public class EventoController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastroEvento dados){
+    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroEvento dados, UriComponentsBuilder uriBuilder){
 
-        repository.save(new Evento(dados));
+        Evento evento = new Evento(dados);
+        repository.save(evento);
+
+        var uri = uriBuilder.path("/evento/{id}").buildAndExpand(evento.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(new DadosRetornoEvento(evento));
     }
     @GetMapping
     public List<Evento> listar(){

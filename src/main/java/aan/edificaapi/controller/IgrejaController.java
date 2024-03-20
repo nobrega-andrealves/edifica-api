@@ -1,5 +1,7 @@
 package aan.edificaapi.controller;
 
+import aan.edificaapi.domain.evento.DadosRetornoEvento;
+import aan.edificaapi.domain.evento.Evento;
 import aan.edificaapi.domain.igreja.DadosCadastroIgreja;
 import aan.edificaapi.domain.igreja.DadosResultadoPesquisaIgreja;
 import aan.edificaapi.domain.igreja.Igreja;
@@ -12,6 +14,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,9 +28,14 @@ public class IgrejaController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastroIgreja dados){
+    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroIgreja dados, UriComponentsBuilder uriBuilder){
 
-        repository.save(new Igreja(dados));
+        Igreja igreja = new Igreja(dados);
+        repository.save(igreja);
+
+        var uri = uriBuilder.path("/igreja/{id}").buildAndExpand(igreja.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(new DadosResultadoPesquisaIgreja(igreja));
     }
     @GetMapping
     public List<Igreja> listar(){
