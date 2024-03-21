@@ -25,3 +25,6 @@
   * As linhas abaixo evitam que o JPA mude o nome do campo em caseCamel, usando underscore no lugar. Exemplo: sem as configurações abaixo, tipoIgreja viraria tipo_igreja no JPA, causando erro ao salvar, pois a tabela está diferente 
     * spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
     * spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+* Autenticação
+  * Usei JWT para geração de token de autenticação, com a library auth0: https://jwt.io/libraries?language=Java
+    * Repositório no git com documentação: https://github.com/auth0/java-jwt
