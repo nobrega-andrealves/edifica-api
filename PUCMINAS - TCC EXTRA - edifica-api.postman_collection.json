@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "52be199b-f8b6-4e52-b014-21bc063e3b3e",
+		"name": "PUCMINAS - TCC EXTRA - edifica-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12661208"
+	},
+	"item": [
+		{
+			"name": "Evento - Atualizar",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Evento - Cadastrar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"igreja_id\": 1,\r\n    \"nome\": \"Festa do Padroeiro\",\r\n    \"descricao\": \"Festa tradicional que ocorre no mês de janeiro, com seu auge no dia de São Sebastião. Conta, geralmente, com a procissão, e missa e logo após um show ao vivo, encerrando com a queima de fogos.\",\r\n    \"dataCriacao\": \"18/03/2024\",\r\n    \"dataEvento\": \"20/01/2025\",\r\n    \"horaEvento\": \"17:00\",\r\n    \"ativo\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/evento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"evento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eventos - Listar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgRWRpZmljYSIsInN1YiI6ImFuZHJlQHRlc3RlLmNvbS5iciIsImV4cCI6MTcxMTAyODE0NiwiaWQiOjF9.X9YQyCwsWeN094HbAgttGSNXM1vMkAWSt-Jkt5YOrjw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/evento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"evento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento - Recuperar por ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Evento - Recuperar por nome",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Feedback - Dar feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"evento_id\": 4,\r\n    \"pessoa_id\": 1,\r\n    \"notaEvento\": 9,\r\n    \"oQueMaisGostou\": \"Do show e da queima de fogos\",\r\n    \"oQueMenosGostou\": \"A bebida estava um pouco quente no final da festa\",\r\n    \"outrosComentarios\": \"\",\r\n    \"primeiraVez\": false,\r\n    \"indicariaEvento\": true,\r\n    \"dataCriacao\": \"2024-03-20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/feedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feedback - Recuperar por evento",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Pessoa - Atualizar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4\r\n    \"nome\":\"MARIA JOSÉ DA SILVA\",\r\n    \"cpf\": \"12345678900\",\r\n    \"dataNascimento\": \"05/03/1933\",\r\n    \"Sexo\": \"F\",\r\n    \"idPerfil\": \"5\",\r\n    \"idIgreja\": \"1\",\r\n    \"dataInicioMembro\": \"15/03/2024\",\r\n    \"email\": {\r\n        \"enderecoEmail\": \"teste@teste.com.br\",\r\n        \"ativo\" : true\r\n    },\r\n    \"telefone\":{\r\n        \"numeroTelefone\": \"(21) 98765-4321\",\r\n        \"ativo\" : true\r\n    },\r\n    \"endereco\": {\r\n        \"cep\": \"22250020\",\r\n        \"logradouro\": \"rua 1\",\r\n        \"numero\": \"300\",\r\n        \"complemento\": \"\",\r\n        \"bairro\": \"ASA NORTE\",\r\n        \"idCidade\": \"1\",\r\n        \"ativo\" : true\r\n    },\r\n    \"ativo\" : true\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/pessoa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pessoa - Cadastrar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"JOSÉ MARIA DA SILVA\",\r\n    \"cpf\": \"11111111111\",\r\n    \"dataNascimento\": \"23/09/1973\",\r\n    \"Sexo\": \"F\",\r\n    \"idPerfil\": 5,\r\n    \"idIgreja\": \"1\",\r\n    \"dataInicioMembro\": \"15/03/2024\",\r\n    \"email\": {\r\n        \"enderecoEmail\": \"jose.maria@teste.com.br\",\r\n        \"ativo\" : true\r\n    },\r\n    \"telefone\":{\r\n        \"numeroTelefone\": \"(21) 98888-8888\",\r\n        \"ativo\" : true\r\n    },\r\n    \"endereco\": {\r\n        \"cep\": \"25931100\",\r\n        \"logradouro\": \"rua Guarani\",\r\n        \"numero\": \"\",\r\n        \"complemento\": \"s/n casa 37\",\r\n        \"bairro\": \"Piabetá\",\r\n        \"idCidade\": \"2\",\r\n        \"ativo\" : true\r\n    },\r\n    \"ativo\" : true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pessoa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pessoa - Listar",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Pessoa - Recuperar por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pessoa/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pessoa",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pessoa - Recuperar por nome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pessoa/maria",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pessoa",
+						"maria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Igreja - Atualizar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"paroquia_id\": 1,\r\n    \"tipoIgreja\": \"IGREJA\",\r\n    \"nome\": \"Igreja Santa Josefina Bakita\",\r\n    \"responsavel\": \"João Luiz Araújo\",\r\n    \"telefone\": \"(21) 97848-8487\",\r\n    \"dataCriacao\": \"2013-12-15\",\r\n    \"status\": \"EM_OBRAS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/igreja",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"igreja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Igreja - Cadastrar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"paroquia_id\": 1,\r\n    \"tipoIgreja\": \"MATRIZ\",\r\n    \"nome\": \"Paróquia São Sebastião\",\r\n    \"responsavel\": \"teste\",\r\n    \"telefone\": \"(21) 98989-8787\",\r\n    \"dataCriacao\": \"01/01/1980\",\r\n    \"status\": \"ATIVA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/igreja",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"igreja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Igreja - Listar",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Igreja - Recuperar por ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Igreja - Recuperar por nome",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Autenticacao - Efetuar Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"maria.teste@teste.com.br\",\r\n    \"senha\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
