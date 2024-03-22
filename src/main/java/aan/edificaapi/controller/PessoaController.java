@@ -6,6 +6,7 @@ import aan.edificaapi.domain.pessoa.DadosCadastroPessoa;
 import aan.edificaapi.domain.pessoa.DadosResultadoPesquisaPessoa;
 import aan.edificaapi.domain.pessoa.Pessoa;
 import aan.edificaapi.domain.pessoa.PessoaRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("pessoa")
+@SecurityRequirement(name = "bearer-key")
 public class PessoaController {
 
     @Autowired

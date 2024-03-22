@@ -6,6 +6,7 @@ import aan.edificaapi.domain.igreja.DadosCadastroIgreja;
 import aan.edificaapi.domain.igreja.DadosResultadoPesquisaIgreja;
 import aan.edificaapi.domain.igreja.Igreja;
 import aan.edificaapi.domain.igreja.IgrejaRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("igreja")
+@SecurityRequirement(name = "bearer-key")
 public class IgrejaController {
 
     @Autowired

@@ -24,7 +24,6 @@ public class SecurityConfigurations {
 private Igreja pessoa;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        System.out.println("teste");
         return http.csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
@@ -37,13 +36,11 @@ private Igreja pessoa;
     }
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception{
-        System.out.println("teste2");
         return configuration.getAuthenticationManager();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-        System.out.println("teste3");
         return new BCryptPasswordEncoder();
     }
 }

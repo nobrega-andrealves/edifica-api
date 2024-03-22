@@ -4,6 +4,7 @@ import aan.edificaapi.domain.feedback.DadosCadastroFeedback;
 import aan.edificaapi.domain.feedback.DadosRetornoFeedback;
 import aan.edificaapi.domain.feedback.Feedback;
 import aan.edificaapi.domain.feedback.FeedbackRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("feedback")
+@SecurityRequirement(name = "bearer-key")
 public class FeedbackController {
 
     @Autowired

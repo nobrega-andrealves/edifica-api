@@ -4,6 +4,7 @@ import aan.edificaapi.domain.evento.DadosCadastroEvento;
 import aan.edificaapi.domain.evento.Evento;
 import aan.edificaapi.domain.evento.EventoRepository;
 import aan.edificaapi.domain.evento.DadosRetornoEvento;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("evento")
+@SecurityRequirement(name = "bearer-key")
 public class EventoController {
 
     @Autowired
