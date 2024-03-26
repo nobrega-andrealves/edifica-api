@@ -75,7 +75,7 @@ public class PessoaController {
     }
 
     @GetMapping("/localizar")
-    public ResponseEntity<Page<DadosResultadoPesquisaPessoa>> localizarPorNome(@RequestBody String dadoDeBusca, @PageableDefault(size = 10, page = 0, sort = {"nome"}) Pageable paginacao){
+    public ResponseEntity<Page<DadosResultadoPesquisaPessoa>> localizarPorNome(@RequestParam String dadoDeBusca, @PageableDefault(size = 10, page = 0, sort = {"nome"}) Pageable paginacao){
         var page = repository.localizarPorNome(dadoDeBusca, paginacao).map(DadosResultadoPesquisaPessoa::new);
         return ResponseEntity.ok(page);
     }

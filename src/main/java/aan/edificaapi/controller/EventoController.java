@@ -74,7 +74,7 @@ public class EventoController {
     }
 
     @GetMapping("/localizar")
-    public ResponseEntity<Page<Evento>> localizarPorNome(@RequestBody String dadoDeBusca, @PageableDefault(sort = {"nome"}) Pageable paginacao){
+    public ResponseEntity<Page<Evento>> localizarPorNome(@RequestParam String dadoDeBusca, @PageableDefault(sort = {"nome"}) Pageable paginacao){
         var page = repository.localizarPorNome(dadoDeBusca, paginacao);
         return ResponseEntity.ok(page);
     }

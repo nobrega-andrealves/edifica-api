@@ -76,7 +76,7 @@ public class IgrejaController {
     }
 
     @GetMapping("/localizar")
-    public ResponseEntity<Page<DadosResultadoPesquisaIgreja>> localizarPorNome(@RequestBody String dadoDeBusca, @PageableDefault(size = 10, page = 0, sort = {"nome"}) Pageable paginacao){
+    public ResponseEntity<Page<DadosResultadoPesquisaIgreja>> localizarPorNome(@RequestParam String dadoDeBusca, @PageableDefault(size = 10, page = 0, sort = {"nome"}) Pageable paginacao){
         var page = repository.localizarPorNome(dadoDeBusca, paginacao).map(DadosResultadoPesquisaIgreja::new);
         return ResponseEntity.ok(page);
     }
